@@ -25,8 +25,7 @@ public class Translator {
 
     public Translator() {
         try {
-            JAXBContext jaxbContext = JAXBContext.newInstance(Translation.class);
-            unmarshaller = jaxbContext.createUnmarshaller();
+            unmarshaller = JAXBContext.newInstance(Translation.class).createUnmarshaller();
         } catch (JAXBException e) {
             throw propagate(e);
         }
