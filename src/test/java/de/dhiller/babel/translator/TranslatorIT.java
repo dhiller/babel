@@ -4,8 +4,11 @@ import org.hamcrest.Matchers;
 import org.junit.Test;
 
 import java.util.List;
+import java.util.Locale;
 
 import static java.util.Arrays.asList;
+import static java.util.Locale.ENGLISH;
+import static java.util.Locale.FRENCH;
 import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.notNullValue;
@@ -17,8 +20,10 @@ public class TranslatorIT {
 
     @Test
     public void translateEnglish() {
-        List<String> translate = underTest.translate(asList("This is a test"));
-        assertThat(translate, Matchers.<List<String>>both(notNullValue()).and(not(empty())));
+        assertThat(
+                underTest.translate(asList("This is a test"), ENGLISH, FRENCH),
+                Matchers.<List<String>>both(notNullValue()).and(not(empty()))
+        );
     }
 
 }
